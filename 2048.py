@@ -8,17 +8,21 @@ def main():
     input('Press Enter to start')
 
     GameBoard = getNewBoard()
+    score = 0                          # Initialize score to 0
 
+  
     while True:
         drawBoard(GameBoard)
-        print('Score:', getScore(GameBoard))
+        print('Score:', score)  # Display the current score
         PlayerMove = askForPlayerMove()
         GameBoard = MakeMove(GameBoard, PlayerMove)
+        score = getScore(GameBoard)  # Update the score after the move
         addTwoToBoard(GameBoard)
 
         if isFull(GameBoard):
             drawBoard(GameBoard)
             print('Game Over!')
+            print('Final Score:', score)  # Display the final score
             sys.exit()
 
 def getNewBoard():
